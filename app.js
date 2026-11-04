@@ -51,7 +51,7 @@ const rain=()=>{const r=$("#rain"),ch="あいうえおアイウエオ日月火�
 /* ===== VIEWS ===== */
 const tile=(h,k,t,s,c="")=>`<a class="tile ${c}" href="${h}"><span class="kana">${k}</span><h2>${t}</h2><small>${s}</small></a>`;
 const views={
-home:()=>`<section class="hero"><div><h1>เรียนภาษาญี่ปุ่น<br>ให้เฟี้ยว ให้แจ่ม</h1><p>ฝึกอ่านตัวอักษร ฟังเสียงจริง จำคำศัพท์ แล้วพิมพ์ตอบเองในโหมดทดสอบ เก็บสถิติสูงสุดไว้ในเครื่องคุณ</p>
+home:()=>`<section class="hero"><div><h1>เรียนภาษาญี่ปุ่น </h1><p>ฝึกอ่านตัวอักษร ฟังเสียงจริง จำคำศัพท์ แล้วพิมพ์ตอบเองในโหมดทดสอบ เก็บสถิติสูงสุดไว้ในเครื่องคุณ</p>
 <div class="tiles">${tile("#/learn","学","แบบเรียน","ตารางอักษร • เสียงอ่าน • แฟลชการ์ด","")}${tile("#/test","試","แบบทดสอบ","พิมพ์ตอบเอง • สะสมสตรีค","red")}</div></div><div class="vert" aria-hidden="true">日本語</div></section>`,
 menu:m=>`<a class="crumb" href="#/">← กลับหน้าแรก</a><h1 class="page">${m=="learn"?"แบบเรียน":"แบบทดสอบ"}</h1><p class="sub">เลือกหมวดที่อยากฝึก</p><div class="tiles">${tile(`#/${m}/hiragana`,"あ","ฮิรางะนะ","46 ตัว + เสียงขุ่น")}${tile(`#/${m}/katakana`,"ア","คาตาคานะ","ใช้เขียนคำต่างชาติ")}${tile(`#/${m}/vocab`,"語","คำศัพท์",VOCAB.length+" คำพื้นฐาน")}</div>`,
 learnKana:k=>`<a class="crumb" href="#/learn">← แบบเรียน</a><h1 class="page">${SETS[k].name}</h1><p class="sub">กดที่ตัวอักษรเพื่อฟังเสียงอ่าน (เสียงมาจากเบราว์เซอร์ของคุณ)</p>`+SETS[k].groups.map(([n,rows])=>`<div class="sec">${n}</div><div class="grid">${rows.flat().map(x=>x.ro==="_"||x.jp==="_"?`<div class="card blank"></div>`:`<button class="card" data-s="${x.jp}">${x.jp}<small>${x.ro}</small></button>`).join("")}</div>`).join("")+`<a class="btn" href="#/test/${k}">ทดสอบเลย</a>`,
@@ -61,7 +61,7 @@ learnVocab:()=>`<a class="crumb" href="#/learn">← แบบเรียน</a>
 /* ===== VIEWS V2 ===== */
 const kname=k=>k==="vocab"?"คำศัพท์":SETS[k].name;
 const T={learn:["แบบเรียน","เลือกหมวดที่อยากฝึก"],test:["แบบทดสอบ","เลือกหมวดที่อยากทดสอบ"],"play/match":["จับคู่การ์ด","เลือกหมวดที่อยากเล่น"],"play/speed":["สปีดรัน 30 วิ","เลือกหมวดที่อยากเล่น"]};
-views.home=()=>`<section class="hero"><div><h1>เรียนภาษาญี่ปุ่น<br>ให้เฟี้ยว ให้แจ่ม</h1><p>อ่าน ฟัง เล่นเกม ทำแบบทดสอบ สะสม XP เลเวลอัปไปเรื่อยๆ ทุกอย่างกดได้ด้วยนิ้วโป้งเดียว</p>
+views.home=()=>`<section class="hero"><div><h1>เรียนภาษาญี่ปุ่น<br>ให้เฟี้ยว ให้แจ่ม</h1><p>อ่าน ฟัง เล่นเกม ทำแบบทดสอบ สะสม XP </p>
 <div class="tiles">${tile("#/learn","学","แบบเรียน","ตารางอักษร • แฟลชการ์ด")}${tile("#/test","試","แบบทดสอบ","แตะเลือก • พิมพ์ • ฟัง","red")}${tile("#/play","遊","เกม","จับคู่ • สปีดรัน","blue")}</div></div><div class="vert" aria-hidden="true">日本語</div></section>`;
 views.menu=m=>`<a class="crumb" href="${m.startsWith("play/")?"#/play":"#/"}">← กลับ</a><h1 class="page">${T[m][0]}</h1><p class="sub">${T[m][1]}</p><div class="tiles">${tile(`#/${m}/hiragana`,"あ","ฮิรางะนะ","46 ตัว + เสียงขุ่น")}${tile(`#/${m}/katakana`,"ア","คาตาคานะ","คำต่างชาติ")}${tile(`#/${m}/vocab`,"語","คำศัพท์",VOCAB.length+" คำพื้นฐาน")}</div>`;
 views.play=()=>`<a class="crumb" href="#/">← กลับ</a><h1 class="page">เกม</h1><p class="sub">เล่นสนุกแล้วได้ XP ด้วย</p><div class="tiles">${tile("#/play/match","🃏","จับคู่การ์ด","จับอักษรคู่กับคำอ่าน/คำแปล","red")}${tile("#/play/speed","⚡","สปีดรัน","30 วินาที ตอบให้ได้มากที่สุด","blue")}</div>`;
