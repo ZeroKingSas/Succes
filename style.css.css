@@ -1,0 +1,92 @@
+:root{--ink:#0e1733;--ink2:#18244d;--washi:#f2ead9;--paper:#fffaf0;--red:#d7263d;--sakura:#f6a8bd;--gold:#e8b44c;--text:#eef0fa;--mut:#9aa6d4}
+@media (prefers-color-scheme:light){:root{}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{min-height:100vh;background:radial-gradient(circle at 80% -10%,#2a3a7a 0,transparent 50%),radial-gradient(circle at 0 100%,#4a1d46 0,transparent 45%),var(--ink);color:var(--text);font:400 16px/1.6 "Noto Sans Thai","Noto Sans JP",sans-serif;overflow-x:hidden}
+h1,h2,.big{font-family:"Dela Gothic One","Noto Sans Thai",sans-serif;font-weight:400;line-height:1.15}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+#rain{position:fixed;inset:0;pointer-events:none;z-index:0}
+#rain span{position:absolute;top:-10%;color:var(--sakura);opacity:.14;font-family:"Noto Sans JP";animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(115vh) rotate(40deg)}}
+.top{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;backdrop-filter:blur(12px);background:#0e173399;border-bottom:1px solid #ffffff14}
+.logo{font-family:"Dela Gothic One";font-size:1.2rem;display:flex;align-items:center;gap:10px}
+.hanko{display:inline-grid;place-items:center;width:34px;height:34px;background:var(--red);color:var(--paper);border-radius:6px;transform:rotate(-6deg);font-family:"Noto Sans JP";font-weight:700}
+.hud{display:flex;gap:16px;font-weight:600}
+main{position:relative;z-index:1;max-width:1100px;margin:auto;padding:5vh 5vw 10vh}
+.crumb{display:inline-block;color:var(--mut);margin-bottom:18px}.crumb:hover{color:var(--sakura)}
+.hero{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;min-height:62vh}
+.hero h1{font-size:clamp(2.2rem,6vw,4.6rem)}
+.hero p{color:var(--mut);max-width:46ch;margin:16px 0 28px}
+.vert{writing-mode:vertical-rl;font:700 clamp(4rem,12vw,9rem)/1 "Noto Sans JP";color:transparent;-webkit-text-stroke:2px var(--sakura);letter-spacing:.1em;animation:glow 4s ease-in-out infinite alternate}
+@keyframes glow{to{-webkit-text-stroke-color:var(--gold);text-shadow:0 0 40px #e8b44c55}}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.tile{position:relative;display:flex;flex-direction:column;gap:6px;padding:28px;border-radius:18px;background:linear-gradient(160deg,#ffffff12,#ffffff05);border:1px solid #ffffff22;transition:transform .25s,border-color .25s,box-shadow .25s;overflow:hidden;min-height:190px}
+.tile:hover{transform:translateY(-6px) rotate(-.6deg);border-color:var(--sakura);box-shadow:0 18px 40px #0007}
+.tile .kana{font:700 4.5rem/1 "Noto Sans JP";color:var(--sakura)}
+.tile h2{font-size:1.5rem}.tile small{color:var(--mut)}
+.tile.red{background:linear-gradient(160deg,var(--red),#8d1228);border:0}.tile.red .kana,.tile.red small{color:var(--paper)}
+h1.page{font-size:clamp(1.8rem,4vw,3rem);margin-bottom:8px}.sub{color:var(--mut);margin-bottom:28px}
+.sec{margin:28px 0 12px;color:var(--gold);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:12px}
+.card{aspect-ratio:1;display:grid;place-items:center;align-content:center;gap:2px;border:0;border-radius:14px;background:var(--washi);color:var(--ink);cursor:pointer;font:700 2.6rem/1 "Noto Sans JP";transition:transform .15s,background .2s;position:relative}
+.card small{font:600 .85rem "Noto Sans Thai";color:#6a5d45}
+.card:hover{transform:scale(1.08) rotate(-2deg);background:#fff}
+.card.pop{animation:pop .4s}@keyframes pop{50%{transform:scale(1.2);background:var(--sakura)}}
+.card.blank{background:transparent;cursor:default;pointer-events:none}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.flip{perspective:800px;height:170px;cursor:pointer;border:0;background:none;font:inherit}
+.flip>div{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.flip.on>div{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:4px;border-radius:16px;backface-visibility:hidden;padding:12px;text-align:center}
+.front{background:var(--washi);color:var(--ink)}.front b{font:700 2rem "Noto Sans JP"}.front span{color:#6a5d45}
+.back{background:linear-gradient(160deg,var(--red),#8d1228);color:var(--paper);transform:rotateY(180deg);font-size:1.4rem;font-weight:600}
+.quiz{max-width:640px;margin:auto;text-align:center}
+.bar{height:8px;background:#ffffff1f;border-radius:9px;overflow:hidden;margin-bottom:26px}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sakura),var(--gold));transition:width .4s}
+.q{font:700 clamp(5rem,20vw,9rem)/1.1 "Noto Sans JP";background:var(--washi);color:var(--ink);border-radius:24px;padding:20px 30px;margin-bottom:12px;box-shadow:0 0 0 6px var(--ink),0 0 0 8px var(--sakura)}
+.q.word{font-size:clamp(2.6rem,10vw,4.5rem)}
+.hint{color:var(--mut);margin-bottom:18px;min-height:1.6em}
+input{width:100%;padding:16px 20px;border-radius:14px;border:2px solid #ffffff33;background:#ffffff10;color:var(--text);font:600 1.4rem "Noto Sans Thai";text-align:center}
+input:focus{outline:none;border-color:var(--sakura)}
+input.ok{border-color:#5be3a0;background:#5be3a022;animation:pop .4s}input.no{border-color:var(--red);animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.btn{display:inline-flex;align-items:center;gap:8px;margin:18px 6px 0;padding:12px 26px;border:0;border-radius:99px;background:var(--red);color:var(--paper);font:600 1rem "Noto Sans Thai";cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-3px)}.btn.ghost{background:#ffffff1a}
+.fb{min-height:2em;margin-top:12px;font-weight:600}
+.score{font:400 5rem "Dela Gothic One";color:var(--gold)}
+.wrong{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}.wrong span{background:#ffffff14;border-radius:10px;padding:6px 14px}
+@media (max-width:640px){.hero{grid-template-columns:1fr}.vert{writing-mode:horizontal-tb;font-size:4rem}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ===== V2: prettier + mobile-first ===== */
+body::before,body::after{content:"";position:fixed;z-index:0;width:60vmax;height:60vmax;border-radius:50%;filter:blur(90px);opacity:.35;pointer-events:none;animation:drift 18s ease-in-out infinite alternate}
+body::before{background:#d7263d;top:-30vmax;left:-20vmax}body::after{background:#3b5bdb;bottom:-35vmax;right:-20vmax;animation-delay:-9s}
+@keyframes drift{to{transform:translate(8vmax,6vmax) scale(1.15)}}
+*{-webkit-tap-highlight-color:transparent}button,a{touch-action:manipulation}
+main{padding-bottom:140px}
+.hud span{background:#ffffff14;border:1px solid #ffffff1f;padding:4px 12px;border-radius:99px;font-size:.85rem;white-space:nowrap}
+.top{padding-top:calc(12px + env(safe-area-inset-top))}
+.tile{box-shadow:inset 0 1px 0 #ffffff30}
+.tile.blue{background:linear-gradient(160deg,#4263eb,#1b2a6b);border:0}.tile.blue .kana,.tile.blue small{color:var(--paper)}
+.tile::after{content:"";position:absolute;right:-30px;bottom:-30px;width:110px;height:110px;border-radius:50%;background:#ffffff14}
+.dock{position:fixed;z-index:20;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));display:flex;gap:4px;padding:6px;border-radius:28px;background:#0e1733d9;backdrop-filter:blur(16px);border:1px solid #ffffff2a;box-shadow:0 12px 40px #000a}
+.dock a{display:flex;flex-direction:column;align-items:center;min-width:72px;padding:8px 12px;border-radius:22px;font-size:1.3rem;line-height:1.2;color:var(--mut);transition:background .2s}
+.dock a small{font-size:.72rem;font-weight:600}.dock a.act{background:var(--red);color:var(--paper)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.opt{min-height:68px;padding:12px;border:2px solid #ffffff2a;border-radius:18px;background:#ffffff12;color:var(--text);font:600 1.1rem/1.3 "Noto Sans Thai","Noto Sans JP";cursor:pointer;transition:transform .12s,background .2s}
+.opt:active{transform:scale(.95)}.opts.jp .opt{font:700 2.4rem "Noto Sans JP";min-height:84px}
+.opt.ok{background:#1f9d6a;border-color:#5be3a0}.opt.no{background:#8d1228;border-color:var(--red);animation:shake .4s}
+.q.speak{display:block;margin:0 auto 12px;border:0;cursor:pointer;font-size:4.5rem;width:100%}.q.speak:active{transform:scale(.97)}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:520px}
+.mc{min-height:96px;padding:6px;border:2px solid #ffffff2a;border-radius:16px;background:#ffffff12;color:var(--text);font:600 1rem/1.25 "Noto Sans Thai";cursor:pointer;transition:transform .15s,background .2s}
+.mc.jp{font:700 1.9rem "Noto Sans JP"}.mc.on{background:var(--sakura);color:var(--ink);transform:scale(1.05)}
+.mc.bad{background:var(--red);animation:shake .4s}.mc.hit{background:#1f9d6a;border-color:#5be3a0;opacity:.55;pointer-events:none}
+.hud2{display:flex;justify-content:space-between;font-weight:600;margin-bottom:14px}
+.btn{min-height:48px}
+@media (max-width:640px){
+ main{padding:3vh 16px 140px}.logo{font-size:1rem}.hud{gap:6px}
+ .grid{grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px}.card{font-size:2rem;border-radius:12px}
+ .vgrid{grid-template-columns:1fr 1fr;gap:10px}.flip{height:150px}
+ .tile{min-height:140px;padding:20px}.tile .kana{font-size:3.2rem}
+ .opts:not(.jp){grid-template-columns:1fr}.dock a{min-width:64px}
+}
